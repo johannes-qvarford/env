@@ -1,0 +1,33 @@
+source ~/.basicvimrc
+
+"" Shows the window, and then closes it immidiatly
+" noremap <c-t> :action GotoClass<cr>
+
+noremap <leader>a :action Back<cr>
+noremap <leader>d :action Forward<cr>
+noremap <leader>qd :action QuickJavaDoc<cr>
+noremap <leader>mo :action Move<cr>
+noremap <leader>nf :action NewFile<cr>
+noremap <leader>nd :action NewDir<cr>
+noremap <leader>nc :action NewClass<cr>
+noremap <leader>re :action RenameElement<cr>
+noremap <leader>g :action GotoDeclaration<cr>
+noremap <leader><leader>g :action GotoTypeDeclaration<cr>
+noremap <leader>tt :symbol<cr>
+noremap <leader>de :action Debug<cr>
+noremap <leader>ru :action Run<cr>
+noremap <leader>in :action StepInto<cr>
+noremap <leader>ou :action StepOut<cr>
+noremap <leader>ov :action StepOver<cr>
+noremap <leader>dl :action SafeDelete<cr>
+noremap <leader>sw :action SurroundWith<cr>
+vnoremap <leader>sw :action SurroundWith<cr>
+
+"noremap <leader>me :action Resharper.Resharper_GotoFileMember<cr>
+"noremap <leader>cle :action Resharper.Resharper_CleanupCode<cr>
+"noremap <leader>it :action Resharper.Resharper_InspectThis<cr>
+"noremap <leader>rl :action Resharper.Resharper_GotoRelatedFiles<cr>
+"noremap <leader>sw :action Resharper.Resharper_SurroundWith<cr>
+"noremap <leader>ee :action Resharper_AltEnter<cr>
+
+"noremap <leader>rf :action Resharper.Resharper_RefactorThis<cr>

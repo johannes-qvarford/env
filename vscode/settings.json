@@ -1,0 +1,100 @@
+{
+    "files.associations": {
+        "*.nghtml": "html",
+        "*.props": "xml"
+    },
+
+    "files.exclude": {
+        "**/obj": true,
+        "**/bin": true
+    },
+    "files.autoSave": "off",
+    "editor.fontSize": 13,
+    "vim.overrideCopy": false,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": false,
+    // Enable once we have setup path for neoVim.
+    //"vim.enableNeovim": true,
+    "vim.insertModeKeyBindingsNonRecursive": [
+       {
+           "before": ["j", "k"],
+           "after": ["<Esc>"]
+       },
+    ],
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+           "before": ["<leader>", "z"],
+           "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                },
+                {
+                    "command": "workbench.action.closeActiveEditor",
+                    "args": []
+                }
+            ]
+        },
+                {
+           "before": ["<leader>", "w"],
+           "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                }
+            ]
+        },
+        {
+           "before": ["<leader>", "p"],
+           "after": [],
+           "commands": [
+               {
+                   "command": "workbench.action.tasks.runTask",
+                   "args": "pub"
+               }
+           ]
+       },
+       {
+           "before": ["<leader>", "b"],
+           "after": [],
+           "commands": [
+               {
+                   "command": "workbench.action.tasks.runTask",
+                   "args": "build"
+               }
+           ]
+       },
+       {
+           "before": ["<leader>", "r"],
+           "after": [],
+           "commands": [
+               {
+                   "command": "workbench.action.tasks.runTask",
+                   "args": "restore"
+               }
+           ]
+       },
+       {
+           "before": ["<leader>", "c", "n"],
+           "after": [],
+           "commands": [
+               {
+                   "command": "workbench.action.tasks.runTask",
+                   "args": "clearNugetCache"
+               }
+           ]
+       },
+       {
+           "before": ["<leader>", "u", "s"],
+           "after": [],
+           "commands": [
+               {
+                   "command": "workbench.action.tasks.runTask",
+                   "args": "upgradeSsScripts"
+               }
+           ]
+       },
+    ],
+    "vim.leader": "s",
+    "vim.easymotion": true
+}

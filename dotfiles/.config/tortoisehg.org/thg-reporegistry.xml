@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reporegistry>
+  <treeitem>
+    <allgroup name="default">
+      <repo root="/Users/jq/private/TinyTrickyTiles" shortname="TinyTrickyTiles" basenode="e12d1666c25d79c64d7e734da43bb35cf6ae0b01"/>
+      <repo root="/Users/jq/private/appgradera.moelven" shortname="appgradera.moelven" basenode="04f30eabcd8aa9745e4a945510316679dcd9668e"/>
+    </allgroup>
+  </treeitem>
+</reporegistry>

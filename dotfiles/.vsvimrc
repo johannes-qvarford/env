@@ -1,0 +1,34 @@
+source ~/.basicvimrc
+
+noremap <leader>/ :vsc Resharper.Resharper_GotoType<cr>
+noremap <leader>a :vsc View.NavigateBackward<cr>
+noremap <leader>d :vsc View.NavigateForward<cr>
+noremap <leader>doc :vsc Resharper.Resharper_QuickDoc<cr>
+noremap <leader>mo :vsc Resharper.Resharper_Move<cr>
+noremap <leader>ed :vsc Project.AddNewItem<cr>
+noremap <leader>me :vsc Resharper.Resharper_GotoFileMember<cr>
+noremap <leader>cle :vsc Resharper.Resharper_CleanupCode<cr>
+noremap <leader>it :vsc Resharper.Resharper_InspectThis<cr>
+noremap <leader>rl :vsc Resharper.Resharper_GotoRelatedFiles<cr>
+noremap <leader>sw :vsc Resharper.Resharper_SurroundWith<cr>
+noremap <leader>ee :vsc Resharper_AltEnter<cr>
+noremap <leader>re :vsc Refactor.Rename<cr>
+noremap <leader>rf :vsc Resharper.Resharper_RefactorThis<cr>
+noremap <leader>ru :vsc Debug.Start<cr>
+noremap <leader>ov :vsc Debug.StepOver<cr>
+noremap <leader>ou :vsc Debug.StepOut<cr>
+noremap <leader>in :vsc Debug.StepIn<cr>
+noremap <leader>O O<esc>O
+noremap <leader>sj :join<cr>
+noremap <leader>sJ k:join<cr>
+noremap <leader>l :vsc Window.NextTab<cr>
+noremap <leader>h :vsc Window.PreviousTab<cr>
+noremap <leader>pe :vsc Edit.PeekDefinition<cr>
+
+noremap <leader>b :vsc Build.BuildOnlyProject<cr>
+
+noremap <leader>rs :vsc Tools.ExternalCommand1<cr>
+noremap <leader>cn :vsc Tools.ExternalCommand2<cr>
+noremap <leader>pu :vsc Tools.ExternalCommand3<cr>
+noremap <leader>us :vsc Tools.ExternalCommand4<cr>
+noremap <leader>nl :vsc Tools.ExternalCommand5<cr>

@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+
+import subprocess
+import sys
+import io
+
+devnull = io.open("/dev/null")
+sys.exit(subprocess.call("hg root", shell=True, stdout=devnull, stderr=devnull))

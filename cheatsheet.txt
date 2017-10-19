@@ -1,0 +1,98 @@
+ipconfig /all
+systeminfo
+
+# RUBY EXAMPLES (awk and sed mode)
+# -ne, processing, $_ contains current line
+# -pe, printing
+# -a, split
+
+# ps aux, detailed output
+
+# df -k display how much disk is free on mounted stuff
+# du dir -k display disk usage
+# cmp -s /bin/ls /bin/echo compare files, -s represses output onlt exit status
+
+
+# SED EXAMPLES
+sed '/match this/ s//& line/' # for all lines containing 'match this' substitute it with 'match this line'
+sed '/match/ s/this/& line/' # for all lines containing 'match', substitute 'this' with 'this line'
+sed -n '10,42p' # print line 10 to 42
+sed -n '$p' # print the last line
+sed '/start/,/end/ s/content/more shit/g' # in all lines from a line matching 'start' to a line matching 'end', substitute 'content' with 'more shit'
+sed -n '\: tolstoy: s;; Tolstoy; p' /etc/ passwd # use ':' as a delimiter, why isn't this needed for ';'?
+/used/!s/new/used/g # match lines not containing 'used' and replace 'new' with 'used'
+sed '10q' # quit after printing 10 lines
+
+# CUT EXAMPLES (like map)
+cut -c 2-10 # cut from the second to the tenth character
+cut -d : -f 1,5 # select field 1 and 5 using ':' as the delimiter
+
+# join (like zip+map)
+join f.txt g.txt # join on first field (delimiter is space)
+join a b -t : # use ':' as a field sepearator
+# -a1 is left join
+# -a2 is right join
+# -a1 -a2 # is full outer join
+# -e X replaces missing fields with 'X'
+join -o 0 1.1 2.1 1.txt 2.txt # select join field, first field from first file and first field from second file.
+
+# awk
+# $NF is field count
+# $n is field number n, $0 is whole record
+$ FILENAME, FNR (record nr in file), NR (record nr in job), RS/ORS (record sep) (if "", sepearate by 1+ empty lines) (is regex if 2+ chars long)
+# ARGC+ARGV
+awk '{ print $1, $NF }' f.txt # print first and last field
+# -F X, field seperator $FS
+# -v 'OFS=**', set variable, $OFS is output field seperator
+# comma between arguments concats with OFS, no comma = no OFS
+# 'BEGIN {}' run before processing 'END {}' after processing.
+# gsub(from, to) substitutes from by to.
+# ~ ~!, string does/does not match regex.
+
+# sort
+# sort by LANG by default
+# -b ignore whitespace
+# -c is sorted? no ouput, non zero ret code if not.
+# -d dictionary order
+# -g float order
+# -n integer order
+# -f ignore case
+# -i ignore non-printable chars
+# -k 'key' field -k2.4,5.6 compare from 2th field 4th char, ending 5th field 6th char
+# -k 1,2 compare 1th field from 1th and 2nd field from 2nd.
+# multiple -k is then by like -k2nr -k3,4r
+# -m merge
+# -o outfile
+# -t field sep + leading/trailing space is signifant
+# -r descending
+# -u unique by key
+
+# od
+# -a trunc multibyte chars
+#
+
+# uniq
+# -c count prefix
+# -d only dups
+# -u only non-dups
+
+# fmt
+# -w 30 max width for line
+# -s split long lines, do not join short lines
+
+# xargs
+# -0 use NUL as delimiter
+# -n x limit the number of arguments to x
+# -L x run command x times
+
+# wc -c -l -w
+
+# head -3 -c char-limit, tail -3
+tail -10 -f a.txt # watch file for more output
+strings # print lines from binary files
+file # identify file type
+
+# od - octal dump
+
+# getopts - process arg
+

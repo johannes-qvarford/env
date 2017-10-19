@@ -1,0 +1,7 @@
+import subprocess
+import os
+import sys
+
+if subprocess.call("hg root", stderr=None, stdout=sys.stdout) != 0:
+    if subprocess.call("git rev-parse --git-dir", stderr=None, stdout=sys.stdout) != 0:
+        print(os.getcwd())

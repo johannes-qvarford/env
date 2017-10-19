@@ -1,0 +1,141 @@
+set nocompatible
+filetype off
+filetype plugin indent on
+
+let g:is_windows = has("win32")
+let g:is_cygwin = has("win32unix")
+let g:is_windows_like = g:is_windows || g:is_cygwin
+let g:is_unix = has("unix")
+let g:is_mac = has("mac")
+let g:is_unix_like = g:is_unix || g:is_cygwin
+
+if g:is_windows
+    set shell=C:/cygwin64/bin/mintty
+else
+    set shell=/bin/bash
+end
+
+if g:is_mac
+    "easier to reach $
+    inoremap € $
+    noremap € $
+
+    "swap because windows scancode for < is § on mac
+    inoremap § <
+    inoremap ° >
+    inoremap << \|
+    inoremap >> \
+    inoremap >! ^
+else
+    "¤, § and ½ are useless, remap them to avoid using <alt>
+    inoremap ¤¤ $
+    noremap ¤¤ $
+    inoremap ½½ \
+    inoremap ½! ^
+    noremap ½! ^
+    inoremap § \|
+    "not fixed for mac
+    inoremap ½(( {
+    inoremap ½)) }
+    inoremap ½((( [
+    inoremap ½))) ]
+endif
+
+"basic preferences
+filetype plugin on
+set number
+set numberwidth=3
+set ruler
+set autochdir
+set wrap
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set hidden
+set bs=2
+filetype indent on
+colorscheme jellybeans
+syntax on
+
+let mapleader = "s"
+let maplocalleader = "q"
+
+"basic keymappings
+noremap <enter> o<esc>
+inoremap jk <esc>
+"it's common to trigger jk by mistake in visual mode, just use J. 
+vnoremap J <esc>
+
+"moving around in a file
+noremap  0
+noremap  $
+noremap H b
+noremap L w
+noremap J 5j
+noremap K 5k
+
+"saving and quitting should be fast
+noremap <leader>z :x<cr>
+noremap <leader>W :w!<cr>
+noremap <leader>w :w<cr>
+noremap <leader>Q :q!<cr>
+noremap <leader>q :q<cr>
+
+"window commands
+noremap <leader>h h
+noremap <leader>j j
+noremap <leader>k k
+noremap <leader>l l
+noremap <leader>x c
+
+"tab commands
+noremap <leader>% :vsplit<cr>
+noremap <leader>" :split<cr>
+noremap <leader>N :tabnew<cr>
+noremap <leader>L :tabn<cr>
+noremap <leader>H :tabp<cr>
+noremap <leader>D :tabclose<cr>
+
+"plugin commands
+noremap <leader>ff :FZF<cr>
+noremap <leader>fh :FZF ~<cr>
+"common but more obscure commands
+
+"source current file
+noremap <leader><leader>rc :w <bar>source %<cr>
+"remove copy pasted line numbers
+noremap <leader><leader>ln eval ":normal! :%s/\v^[[:space:]]*[[:digit:]]+ //\<cr>"
+"edit a file relative to home
+noremap <leader><leader>eh :edit ~/
+
+" This causes more harm than good, particularly in visual studio when
+" selecting auto completions.
+"noremap <up> <nop>
+"noremap <left> <nop>
+"noremap <right> <nop>
+"noremap <down> <nop>
+"inoremap <up> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
+"inoremap <down> <nop>
+inoremap <esc> <nop>
+inoremap h <nop>
+inoremap j <nop>
+inoremap k <nop>
+inoremap l <nop>
+inoremap n <nop>
+
+"common misspellings
+abbrev mian main
+abbrev Mian main
+abbrev retunr return
+abbrev dienf define
+abbrev deinf define
+
+function! SourceRange() range
+  let tmpsofile = tempname()
+  call writefile(getline(a:firstline, a:lastline), l:tmpsofile)
+  execute "source " . l:tmpsofile
+  call delete(l:tmpsofile)
+endfunction
+command! -range Source <line1>,<line2>call SourceRange()

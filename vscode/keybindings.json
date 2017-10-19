@@ -1,0 +1,17 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    // { 
+    //     "key": "j k",         
+    //     "command": "workbench.action.exitZenMode",
+    //     "when": "inZenMode" 
+    // },
+    // {
+    //     "key": "s p",
+    //     "command": "workbench.action.tasks.runTask",
+    //     "args": "myget",
+    //     "when": "inZenMode"
+    // }
+    // {
+    //     "command": "workbench.action.sav"
+    // }
+]

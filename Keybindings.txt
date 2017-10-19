@@ -1,0 +1,21 @@
+Win + L -> Lock computer
+Win + D -> Hide/Show Everything
+Win + X, F -> Programs and features
+Win + X, P -> Control Panel
+Win + I -> Settings
+Win + E -> File Explorer
+Win + R -> Run
+Win + X, U, I -> Sign Out
+Win + X, U, S -> Sleep
+Win + X, U, U -> Shut Down
+Win + X, U, R -> Restart
+Win + Left/Right -> Pin Window to side
+Win + Up/Down -> Maximize/Minimize
+Alt + F4 -> Close Window
+Ctrl + Shift + Esc -> Task Manager
+Win + "gpedit" -> Edit Group Policy (Comp > Adm > Cont > Pers > Do not display lock screen )
+Win + "netplwiz" -> Account settings
+Ctrl + Alt + Tab -> Press Enter/Esc to close Alt+Tab menu.
+
+Remember that the search ribbon gives good hints
+

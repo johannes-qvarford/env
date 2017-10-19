@@ -1,0 +1,20 @@
+apt-cyg packages.
+integrate them into setup script.
+
+fish
+fzf-fish
+
+===
+
+Try to use C# completion in vim. -- command for: delete class, close tab, close all tabs but this, create tab
+
+Read classic shell scripting
+Read the vi editor
+Read windows 10 book
+Download and configure vimperator.
+Make { and [ not be so stiff.
+Use original vim package manager guy's vimrc.
+Integrate fzf in vim again
+
+Make script that generates visual studio ftp publishing profiles.
+command that automatically adds default push path to .hg/hgrc, for work and home.
