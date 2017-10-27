@@ -39,7 +39,7 @@
 [push]
 #	default = simple
 [user]
-	email = johannes.qvarford@gmail.com
+	email = johannes@solutionsskovde.se
 	name = Johannes Qvarford
 [credential]
 	helper = cache
