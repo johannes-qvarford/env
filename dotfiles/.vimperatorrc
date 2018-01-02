@@ -1,7 +1,0 @@
-"3.9 (created: 2015/02/15 15:49:05)
-
-highlight Hint font-family: monospace; font-size: 10px; font-weight: bold; text-transform: uppercase; color: white; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px; z-index:2999999999
-inoremap sz ZZ
-source! /home/jq/.vimperatorrc.local
-
-" vim: set ft=vimperator:

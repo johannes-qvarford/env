@@ -4,6 +4,7 @@ dconf/user
 desktop-metadata
 fish_history
 fishd
+fishd.*
 *.DS_Store
 *.swp
 *.orig
@@ -22,3 +23,5 @@ workspaceStorage/
 .config/user-dirs.dirs
 .config/user-dirs.locale
 .config/yelp/
+
+__pycache__/

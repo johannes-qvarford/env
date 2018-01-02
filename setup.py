@@ -55,53 +55,12 @@ def hg_clone(remote, local):
         sh_call("hg clone https://bitbucket.org/{0} {1}".format(remote, local))
     return not isdir
 
-def assert_not_win32():
-    """
-    Assert that this isn't run from a normal windows command prompt,
-    and exits if not.
-    """
-    if sys.platform == "win32":
-        print("Run this from cygwin")
-        sh_call("pause")
-        sys.exit(1)
-
 def assert_in_env_directory():
     """ Assert that setup is run in the env root directory,
     and exits if not """
     if not "setup" in os.listdir(os.getcwd()):
         print("Run this in env directory")
         sys.exit(1)
-
-def create_maven_home_directory():
-    """ Create a maven .m2 directory in the home directory
-    if it doesn't exist already. """
-    home = os.environ["HOME"]
-    directory = os.path.join(home, ".m2")
-    if not os.path.exists(directory):
-        os.mkdir(directory)
-
-def is_linux_distribution(name):
-    return platform.dist()[0] == name
-
-def install_python_packages():
-    if sys.platform in ["linux2", "linux"]:
-        devnull = subprocess.DEVNULL
-        packages = ["keyring", "mercurial_keyring"]
-        for package in packages:
-            subprocess.call("sudo easy_install {0}".format(package), shell=True, stdout=devnull, stderr=devnull)
-
-def install_linux_packages():
-    """ Install linux packages if this is a linux system. """
-    if sys.platform in ["linux2", "linux"]:
-        devnull = subprocess.DEVNULL
-        packages = ["fish", "tmux", "autoconf", "gcc-c++", "ncurses-devel", "maven"]
-        for package in packages:
-            if is_linux_distribution("fedora") and 0 != subprocess.call("sudo dnf list installed {0}".format(package), shell=True, stdout=devnull, stderr=devnull):
-                subprocess.call("sudo dnf install {0}".format(package), shell=True)
-            elif is_linux_distribution("Ubuntu") and 0 != subprocess.call("dpkg -s {0}".format(package), \
-                    shell=True, stdout=devnull, stderr=devnull):
-                subprocess.call("sudo apt-get install {0}".format(package), \
-                  shell=True)
 
 def symlink_to_dotdir_files():
     """ Create links to the files in the dotfiles directory,
@@ -130,14 +89,6 @@ def symlink_to_dotdir_files():
         homefile = os.path.join(homeconfigdir, filename)
         homefile = decode_homefile(homefile)
         symlink(dotfile, homefile)
-
-def symlink_you_complete_me():
-    """ Symlink the you complete me file to .vim/you_complete_me.py """
-    symvimdir = os.path.join(os.environ["HOME"], ".vim")
-    vimdir = os.path.join(os.getcwd(), "vim")
-    ycmfile = os.path.join(vimdir, "you_complete_me.py")
-    ycmsymfile = os.path.join(symvimdir, "you_complete_me.py")
-    symlink(ycmfile, ycmsymfile)
 
 def symlink_bin_files():
     """ Symlink the files in the bin subdirectory to $HOME/bin """
@@ -171,38 +122,18 @@ def super_symlink(syms):
             symlink_between_env_and_home_directories(envpathsegs=env, homepathsegs=home, ignore=[])
             
 def symlink_vscode_files():
-    """ Symlink the files in the vscode subdirectory to $HOME/AppData/Roaming/Code/User """
+    """ Symlink the files in the vscode subdirectory to $HOME/Library/Application Support/Code/User/ """
+    print("symlinking vscode files")
     syms = [
-        {"env": ["vscode"], "home": ["AppData", "Roaming", "Code", "User"], "subdirs": ["snippets"]}
+        {"env": ["vscode"], "home": ["Library", "Application Support", "Code", "User"], "subdirs": ["snippets"]}
     ]
     super_symlink(syms)
 
-def install_tmux_deps_for_cygwin():
-    """ Install tmux dependencies for cygwin """
-    if sys.platform == "cygwin" and not sh_call("which tmux", silent=True):
-        sh_call("""
-            git clone https://github.com/libevent/libevent /tmp/libevent{0} &&
-            cd /tmp/libevent{0} &&
-            ./autogen.sh &&
-            ./configure --prefix=/usr &&
-            make &&
-            make install &&
-            git clone http://git.code.sf.net/p/tmux/tmux-code /tmp/tmux{0} &&
-            cd /tmp/tmux{0} &&
-            ./autogen.sh &&
-            CFLAGS='-I/usr/include/ncurses' ./configure --prefix=/usr &&
-            make &&
-            make install""".format(random.randint(0, 10000000)))
-
 def install_fish():
     """ Install the fish shell """
-    if sys.platform == "cygwin" and "/usr/local/bin/fish" not in \
-            (line.strip() for line in open("/etc/shells")):
-        git_clone("fish-shell/fish-shell", "/tmp/fish-shell")
-        subprocess.call("cd /tmp/fish-shell && autoconf" + \
-          " && ./configure && make && sudo make install" + \
-          " && sudo sh -c 'echo /usr/local/bin/fish >>/etc/shells'" + \
-          " && chsh -s /usr/local/bin/fish", shell=True)
+    sh_call("""brew install fish""")
+    sh_call("""echo /usr/local/bin/fish | sudo tee -a /etc/shells""")
+    sh_call("""chsh -s /usr/local/bin/fish""")
 
 def install_vim():
     """ Install vim plugins """
@@ -215,7 +146,11 @@ def install_vim():
     # Install vundle and all plugins in the vimrc
     git_clone("VundleVim/Vundle.vim", \
       "{0}/.vim/bundle/Vundle.vim".format(os.environ["HOME"]))
+    # All plugins are not available on the first run, so we have to run it again.
     sh_call("""vim +':execute ":PluginInstall" | q | q'""")
+    sh_call("""vim +':execute ":PluginInstall" | q | q'""")
+    sh_call("""brew install dos2unix""")
+    sh_call("""find ~/.vim -type f -print0 | xargs -0 dos2unix""")
 
 def create_dir(dirname):
     """ Create a directory and all its parent directories
@@ -235,19 +170,14 @@ def install_fzf():
     create_dir(home_bin)
     symlink(gen_fzf, home_bin_fzf)
 
-assert_not_win32()
-assert_in_env_directory()
 
-symlink_vscode_files()
 
-install_python_packages()
-install_linux_packages()
-install_tmux_deps_for_cygwin()
-install_fish()
-create_maven_home_directory()
-install_vim()
-
-symlink_to_dotdir_files()
-symlink_bin_files()
-install_fzf()
+if __name__ == "__main__":
+    assert_in_env_directory()
+    symlink_vscode_files()
+    install_fish()
+    install_vim()
+    symlink_to_dotdir_files()
+    symlink_bin_files()
+    install_fzf()
 #symlink_you_complete_me()

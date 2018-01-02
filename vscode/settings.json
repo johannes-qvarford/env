@@ -35,7 +35,7 @@
                 }
             ]
         },
-                {
+        {
            "before": ["<leader>", "w"],
            "commands": [
                 {
@@ -43,58 +43,9 @@
                     "args": []
                 }
             ]
-        },
-        {
-           "before": ["<leader>", "p"],
-           "after": [],
-           "commands": [
-               {
-                   "command": "workbench.action.tasks.runTask",
-                   "args": "pub"
-               }
-           ]
-       },
-       {
-           "before": ["<leader>", "b"],
-           "after": [],
-           "commands": [
-               {
-                   "command": "workbench.action.tasks.runTask",
-                   "args": "build"
-               }
-           ]
-       },
-       {
-           "before": ["<leader>", "r"],
-           "after": [],
-           "commands": [
-               {
-                   "command": "workbench.action.tasks.runTask",
-                   "args": "restore"
-               }
-           ]
-       },
-       {
-           "before": ["<leader>", "c", "n"],
-           "after": [],
-           "commands": [
-               {
-                   "command": "workbench.action.tasks.runTask",
-                   "args": "clearNugetCache"
-               }
-           ]
-       },
-       {
-           "before": ["<leader>", "u", "s"],
-           "after": [],
-           "commands": [
-               {
-                   "command": "workbench.action.tasks.runTask",
-                   "args": "upgradeSsScripts"
-               }
-           ]
-       },
+        }
     ],
     "vim.leader": "s",
-    "vim.easymotion": true
+    "vim.easymotion": true,
+    "extensions.ignoreRecommendations": false
 }
