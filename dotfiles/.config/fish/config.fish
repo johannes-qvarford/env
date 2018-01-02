@@ -15,7 +15,7 @@ set -x EDITOR vim
 set -x VISUAL vim
 set -x PAGER less
 
-set -gx PATH $HOME/bin /usr/local/bin /usr/bin /bin / $HOME/.local/bin $PATH 
+set -gx PATH $HOME/bin /usr/local/bin /usr/bin /bin / $PATH 
 set -gx fish_function_path $HOME/.config/fish/functions2 $fish_function_path
 
 remove_duplicates_in_array PATH
