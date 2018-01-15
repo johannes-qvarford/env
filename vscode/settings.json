@@ -1,7 +1,10 @@
 {
     "files.associations": {
         "*.nghtml": "html",
-        "*.props": "xml"
+        "*.props": "xml",
+        "*.inc": "php",
+        "*.module": "php",
+        "*.test": "php"
     },
 
     "files.exclude": {
@@ -19,7 +22,7 @@
        {
            "before": ["j", "k"],
            "after": ["<Esc>"]
-       },
+       }
     ],
     "vim.otherModesKeyBindingsNonRecursive": [
         {
@@ -43,9 +46,30 @@
                     "args": []
                 }
             ]
-        }
+        },
+        {
+            "before": ["<leader>", "l"],
+            "commands": [
+                 {
+                     "command": "workbench.action.openNextRecentlyUsedEditorInGroup",
+                     "args": []
+                 }
+             ]
+         },
+         {
+            "before": ["<leader>", "h"],
+            "commands": [
+                 {
+                     "command": "workbench.action.openPreviousRecentlyUsedEditorInGroup",
+                     "args": []
+                 }
+             ]
+         }
     ],
     "vim.leader": "s",
     "vim.easymotion": true,
-    "extensions.ignoreRecommendations": false
+    "extensions.ignoreRecommendations": true,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "window.zoomLevel": 0
 }

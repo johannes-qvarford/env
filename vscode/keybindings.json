@@ -6,12 +6,7 @@
         "when": "inZenMode" 
     },
     {
-        "key": "s p",
-        "command": "workbench.action.tasks.runTask",
-        "args": "myget",
-        "when": "inZenMode"
-    }
-    {
-        "command": "workbench.action.sav"
+        "key": "cmd+0",
+        "command": "workbench.action.zoomReset"
     }
 ]

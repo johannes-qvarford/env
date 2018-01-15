@@ -29,7 +29,7 @@
 [core]
 	editor = vim
 	safecrlf = false
-	autocrlf = true
+	autocrlf = false
 
 [http]
 #	sslCaInfo = ssl-certs/ca-certificates.crt
@@ -37,9 +37,15 @@
 [merge]
 	tool = vimdiff
 [user]
-	email = johannes.qvarford@jackpotjoygroup.com
-	name = Johannes Qvarford
+	email = johannes.qvarford@silverspin.com
+	name = johqva
 [credential]
 	helper = cache
 [push]
 	default = simple
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
