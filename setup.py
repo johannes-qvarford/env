@@ -180,4 +180,5 @@ if __name__ == "__main__":
     symlink_to_dotdir_files()
     symlink_bin_files()
     install_fzf()
+    sh_call("""defaults write com.apple.finder AppleShowAllFiles YES""")
 #symlink_you_complete_me()

@@ -8,5 +8,20 @@
     {
         "key": "cmd+0",
         "command": "workbench.action.zoomReset"
+    },
+    { 
+        "key": "s f",
+        "command": "workbench.action.findInFiles",
+        "when": "inZenMode"
+    },
+    {
+        "key": "shift+cmd+f",
+        "command": "editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+cmd+up",
+        "command": "-editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
     }
 ]

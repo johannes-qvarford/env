@@ -17,5 +17,6 @@ set -x PAGER less
 
 set -gx PATH $HOME/bin /usr/local/bin /usr/bin /bin / $PATH 
 set -gx fish_function_path $HOME/.config/fish/functions2 $fish_function_path
+set -gx MAVEN_OPTS '-Dmaven.wagon.http.ssl.insecure=true'
 
 remove_duplicates_in_array PATH

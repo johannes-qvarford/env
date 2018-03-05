@@ -13,9 +13,12 @@
     },
     "files.autoSave": "off",
     "editor.fontSize": 13,
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/local/bin/nvim",
     "vim.overrideCopy": false,
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": false,
+    "java.jdt.ls.vmargs": "-Dmaven.wagon.http.ssl.insecure=true",
     // Enable once we have setup path for neoVim.
     //"vim.enableNeovim": true,
     "vim.insertModeKeyBindingsNonRecursive": [
@@ -64,12 +67,39 @@
                      "args": []
                  }
              ]
-         }
+         },
+         {
+            "before": ["<leader>", "/"],
+            "commands": [
+                 {
+                     "command": "workbench.action.quickOpen",
+                     "args": []
+                 }
+             ]
+         },
+         {
+            "before": ["<leader>", "7"],
+            "commands": [
+                 {
+                     "command": "workbench.action.showCommands",
+                     "args": []
+                 }
+             ]
+         },
     ],
     "vim.leader": "s",
     "vim.easymotion": true,
     "extensions.ignoreRecommendations": true,
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
-    "window.zoomLevel": 0
+    "window.zoomLevel": 0,
+    "cSpell.userWords": [
+        "Settingssida",
+        "cashier",
+        "freespinbo",
+        "gamstop",
+        "hooks",
+        "limits",
+        "settings"
+    ]
 }
