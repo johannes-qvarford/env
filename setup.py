@@ -44,24 +44,6 @@ def symlink(src, dest):
         os.remove(dest)
         os.symlink(src, dest)
 
-def decode_homefile(filename):
-    """ Decode a home file by replacing the dunders with slashes """
-    return re.sub(r"__", "/", filename)
-
-def hg_clone(remote, local):
-    """ Clone a remote bitbucket hg repo to a local directory."""
-    isdir = os.path.isdir(local)
-    if not isdir:
-        sh_call("hg clone https://bitbucket.org/{0} {1}".format(remote, local))
-    return not isdir
-
-def assert_in_env_directory():
-    """ Assert that setup is run in the env root directory,
-    and exits if not """
-    if not "setup" in os.listdir(os.getcwd()):
-        print("Run this in env directory")
-        sys.exit(1)
-
 def symlink_to_dotdir_files():
     """ Create links to the files in the dotfiles directory,
 
@@ -74,7 +56,6 @@ def symlink_to_dotdir_files():
     for filename in dotfiles:
         dotfile = os.path.join(dotdir, filename)
         homefile = os.path.join(home, filename)
-        homefile = decode_homefile(homefile)
         symlink(dotfile, homefile)
 
     configdir = os.path.join(os.getcwd(), "dotfiles", ".config")
@@ -87,7 +68,6 @@ def symlink_to_dotdir_files():
     for filename in configfiles:
         dotfile = os.path.join(configdir, filename)
         homefile = os.path.join(homeconfigdir, filename)
-        homefile = decode_homefile(homefile)
         symlink(dotfile, homefile)
 
 def symlink_bin_files():
@@ -173,7 +153,6 @@ def install_fzf():
 
 
 if __name__ == "__main__":
-    assert_in_env_directory()
     symlink_vscode_files()
     install_fish()
     install_vim()

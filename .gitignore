@@ -23,5 +23,8 @@ workspaceStorage/
 .config/user-dirs.dirs
 .config/user-dirs.locale
 .config/yelp/
+.settings/
+.classpath
+target/
 
 __pycache__/

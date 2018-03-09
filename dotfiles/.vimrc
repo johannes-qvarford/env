@@ -48,4 +48,4 @@ if !exists("*ExpandSnippetOrCarriageReturn")
 endif
 
 set wildignore=*.so,*.swp,*.dll,*.wav,*.png,*.meta,AppData,.android
-
+set shell=/bin/bash

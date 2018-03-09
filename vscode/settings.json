@@ -9,7 +9,9 @@
 
     "files.exclude": {
         "**/obj": true,
-        "**/bin": true
+        "**/bin": true,
+        "**/.settings": true,
+        "**/.sass_cache": true
     },
     "files.autoSave": "off",
     "editor.fontSize": 13,
@@ -101,5 +103,6 @@
         "hooks",
         "limits",
         "settings"
-    ]
+    ],
+    "java.errors.incompleteClasspath.severity": "ignore"
 }
