@@ -49,8 +49,4 @@ public class OSXEnvironment implements Environment
 	public void installPackages(String... packageNames) throws IOException, InterruptedException {
         Shells.call(String.format("brew install %s", String.join(" ", packageNames)));
     }
-    
-    private void installBrew() {
-
-    }
 }

@@ -137,27 +137,11 @@ def create_dir(dirname):
         if they don't exist. """
     subprocess.call("mkdir -p " + dirname, shell=True)
 
-def install_fzf():
-    """ Install fzf in gen subdirectory, and symlink binary from home/bin """
-    create_dir("gen")
-    git_clone("junegunn/fzf", "gen/fzf")
-    gen_fzf = os.path.join(os.getcwd(), "gen/fzf/fzf")
-
-    home = os.environ["HOME"]
-    home_bin = os.path.join(home, "bin")
-    home_bin_fzf = os.path.join(home_bin, "fzf")
-
-    create_dir(home_bin)
-    symlink(gen_fzf, home_bin_fzf)
-
-
-
 if __name__ == "__main__":
     symlink_vscode_files()
     install_fish()
     install_vim()
     symlink_to_dotdir_files()
     symlink_bin_files()
-    install_fzf()
     sh_call("""defaults write com.apple.finder AppleShowAllFiles YES""")
 #symlink_you_complete_me()

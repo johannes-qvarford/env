@@ -7,7 +7,7 @@ import org.kohsuke.args4j.Option;
 public class Options
 {
     @Option(name="-r", aliases = {"--repository-directory"}, usage="the root directory of the env repository", metaVar="DIR")
-    private Path repositoryDirectory = Paths.get(System.getProperty("user.dir"), "env2");
+    private String repositoryDirectory = Paths.get(System.getProperty("user.dir"), "env2").toString();
 
     @Option(name="-i", aliases = {"--install-dependencies"}, usage="whether or not to install dependencies during this run")
     private boolean installDependencies = false;
@@ -23,7 +23,7 @@ public class Options
 
     public Path repositoryDirectory()
     {
-        return repositoryDirectory;
+        return Paths.get(repositoryDirectory);
     }
 
     public boolean installDependencies()

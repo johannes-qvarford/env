@@ -26,7 +26,7 @@ public class ApplicationTasks
 
     public static void convertVimFilesToUnix() throws IOException, InterruptedException
     {
-        Shells.call("find ~/.vim -type f -print0 | xargs -0 dos2unix");
+        Shells.callf("find %s/.vim -type f -print0 | xargs -0 dos2unix", homeDirectory());
         Shells.call("vim +PluginInstall +qall");
     }
 

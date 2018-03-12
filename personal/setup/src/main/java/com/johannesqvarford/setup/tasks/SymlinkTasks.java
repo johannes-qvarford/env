@@ -29,10 +29,14 @@ public class SymlinkTasks
         symlinkFiles(
             repositoryDirectory.resolve("dotfiles"),
             homeDirectory(),
-            ".config", ".DS_STORE");
+            ".m2", ".config", ".DS_Store");
         symlinkFiles(
             repositoryDirectory.resolve("dotfiles").resolve(".config"),
             homeDirectory().resolve(".config"));
+        symlinkFiles(
+            repositoryDirectory.resolve("dotfiles").resolve(".m2"),
+            homeDirectory().resolve(".m2"),
+            "repository");
     }
 
     public static void symlinkBinFiles(Path repositoryDirectory) throws IOException
@@ -47,7 +51,7 @@ public class SymlinkTasks
         Path sourceDirectory = repositoryDirectory.resolve("vscode");
         Path destinationDirectory = Environment.current().vscodeSettingsDirectory();
         destinationDirectory.toFile().mkdirs();
-        symlinkFiles(sourceDirectory, destinationDirectory, "workspaceStorage");
+        symlinkFiles(sourceDirectory, destinationDirectory, "workspaceStorage", ".DS_Store");
     }
 
     private static void symlinkFiles(Path sourceDirectory, Path destinationDirectory, String... subDirectoriesToAvoid) throws IOException
@@ -57,9 +61,10 @@ public class SymlinkTasks
 
         List<String> toAvoid = Arrays.asList(subDirectoriesToAvoid);
         List<Path> dotfilePaths = FileUtils
-            .nonRecursiveGetChildPaths(repositoryDotfilesDirectory)
+            .nonRecursiveGetChildPaths(repositoryDotfilesDirectory);
+        dotfilePaths = dotfilePaths
             .stream()
-            .filter(p -> toAvoid.stream().noneMatch(sd -> p.toString().contains(sd)))
+            .filter(p -> toAvoid.stream().noneMatch(sd -> p.toString().toLowerCase().contains(sd.toLowerCase())))
             .collect(Collectors.toList());
 
         for (Path dotfilePath : dotfilePaths)

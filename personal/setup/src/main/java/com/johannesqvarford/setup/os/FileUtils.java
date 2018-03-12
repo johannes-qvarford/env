@@ -80,6 +80,6 @@ public class FileUtils
 
     public static Path homeDirectory()
     {
-        return Paths.get(System.getProperty("os.homedir"));
+        return Paths.get(System.getProperty("user.home"));
     }
 }
