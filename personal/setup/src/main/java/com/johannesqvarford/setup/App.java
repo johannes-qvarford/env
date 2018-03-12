@@ -21,7 +21,6 @@ public class App
 {
     public static void main(String[] args) throws IOException, InterruptedException
     {
-        System.out.println(System.getProperty("user.home"));
         App app = new App();
         app.doMain(args);
     }
@@ -31,7 +30,6 @@ public class App
         Options options = new Options();
         CmdLineParser parser = new CmdLineParser(options, ParserProperties.defaults().withUsageWidth(80));
         Path homeDir = FileUtils.homeDirectory();
-        System.out.printf("%s%n", homeDir);
         try {
             parser.parseArgument(args);
             Environment.current().execute(options);
