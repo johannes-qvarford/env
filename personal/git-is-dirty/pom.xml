@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>com.johannesqvarford</groupId>
+    <artifactId>personal</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <groupId>com.johannesqvarford</groupId>
+  <artifactId>git-is-dirty</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>git-is-dirty</name>
+
+  <properties>
+    <mainClass>com.johannesqvarford.gitisdirty.App</mainClass>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>com.johannesqvarford</groupId>
+      <artifactId>app-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.eclipse.jgit</groupId>
+        <artifactId>org.eclipse.jgit</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+     <!--<plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+      </plugin>-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+      </plugin>
+        <!--<plugin>
+          <groupId>com.johannesqvarford</groupId>
+          <artifactId>jplugin-maven-plugin</artifactId>
+        </plugin>-->
+    </plugins>
+  </build>
+</project>

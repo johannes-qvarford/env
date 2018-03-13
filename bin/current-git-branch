@@ -1,9 +1,0 @@
-#!/usr/bin/env python3
-
-import subprocess
-import sys
-
-pipe = subprocess.Popen("git rev-parse --git-dir", stdout=subprocess.PIPE, shell=True)
-gitdir = pipe.stdout.read().decode().strip()
-
-sys.exit(subprocess.call("""cat {0}/HEAD | sed 's:.*/::'""".format(gitdir), shell=True))

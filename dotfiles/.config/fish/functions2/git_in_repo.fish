@@ -1,3 +1,3 @@
 function git_in_repo
-	root-dir git >/dev/null
+	[ -d .git ]; or git rev-parse --git-dir >/dev/null 2>&1
 end

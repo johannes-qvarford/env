@@ -1,14 +1,14 @@
 function fish_prompt -d "Write out the prompt"
 	printf '%s %s %s' \
 		(set_color $fish_color_cwd; prompt_pwd) \
-		(print_bind_mode) \
+		(branch) \
 		(set_color $fish_color_normal; printf "> ")
 end
 
 function branch
-	if hg_in_repo
-		print_branch hg
-	end
+	#if hg_in_repo
+	#	print_branch hg
+	#end
 	if git_in_repo
 		print_branch git
 	end

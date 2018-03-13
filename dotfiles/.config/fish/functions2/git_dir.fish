@@ -1,3 +1,3 @@
 function git_dir
-	root-dir git
+	git rev-parse --git-dir >/dev/null; and git rev-parse --git-dir; or false;
 end

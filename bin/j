@@ -1,0 +1,8 @@
+#!/bin/bash
+# com.johannesqvarford:$1
+#groupId="${1//.//}"
+artifactId="${1//-/-}"
+jarPath=$(find ~/bin/com/johannesqvarford/$artifactId | grep 'jar$' | sort | tail -n 1)
+shift 1;
+#echo java -jar $jarPath "$@"
+java -jar $jarPath "$@"
