@@ -1,7 +1,7 @@
 filetype plugin indent on
 
 set rtp+=$HOME/.vim/bundle/Vundle.vim
-set rtp+=~/env/gen/fzf
+set rtp+=/usr/local/opt/fzf
 
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'     

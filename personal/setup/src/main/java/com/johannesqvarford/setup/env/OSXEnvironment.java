@@ -16,7 +16,9 @@ public class OSXEnvironment implements Environment
         
         if (options.installDependencies())
         {
-            installPackages("dos2unix", "fish");
+            installPackages("dos2unix", "fish", "fzf", "jq");
+            Shells.call("curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher");
+            Shells.call("fisher fzf");
         }
 
         if (options.changeShell())

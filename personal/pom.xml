@@ -12,6 +12,7 @@
     <module>git-is-dirty</module>
     <module>app-core</module>
     <module>jdeploy-maven-plugin</module>
+    <module>server</module>
   </modules>
 
   <name>personal</name>
@@ -84,24 +85,8 @@
             <testTarget>${java.version}</testTarget>
           </configuration>
         </plugin>
-        <!--<plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
-          <configuration>
-            <archive>
-              <manifest>
-                <addClasspath>true</addClasspath>
-                <mainClass>{mainClass}</mainClass>
-              </manifest>
-            </archive>
-            <descriptorRefs>
-              <descriptorRef>jar-with-dependencies</descriptorRef>
-            </descriptorRefs>
-          </configuration>
-        </plugin>-->
 
-        <plugin>
+        <!--<plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-shade-plugin</artifactId>
           <version>3.1.0</version>
@@ -134,32 +119,18 @@
                 </transformer>
               </transformers>
           </configuration>
-        </plugin>
-
-        <!--<plugin>
-          <artifactId>maven-assembly-plugin</artifactId>
-          <version>2.6</version>
-          <configuration>
-            <descriptorRefs>
-              <descriptorRef>jar-with-dependencies</descriptorRef>
-            </descriptorRefs>
-          </configuration>
         </plugin>-->
-
-        <!--<plugin>
-          <groupId>com.johannesqvarford</groupId>
-          <artifactId>jplugin-maven-plugin</artifactId>
-          <version>1.0-SNAPSHOT</version>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
           <executions>
             <execution>
-              <phase>deploy</phase>
               <goals>
-                <goal>sayhi</goal>
+                <goal>repackage</goal>
               </goals>
             </execution>
           </executions>
-        </plugin>-->
-        
+        </plugin>
       </plugins>
     </pluginManagement>
 

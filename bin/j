@@ -1,8 +1,39 @@
 #!/bin/bash
-# com.johannesqvarford:$1
-#groupId="${1//.//}"
-artifactId="${1//-/-}"
-jarPath=$(find ~/bin/com/johannesqvarford/$artifactId | grep 'jar$' | sort | tail -n 1)
+port=9900
+
+name="$1"
 shift 1;
-#echo java -jar $jarPath "$@"
-java -jar $jarPath "$@"
+args=("$@");
+json="[";
+for ((i=1;i<=$#;i++)); do
+    json="$json"'"'"${args[$i-1]}"'"'
+    if [[ $i -ne $# ]]; then
+        json="$json, "
+    fi
+done
+json="$json]"
+
+if ! netstat -an | grep -q "$port.*LISTEN"; then
+    echo "starting" >/dev/null 2>&1
+    jarPath=$(find ~/bin/com/johannesqvarford/server | grep 'jar$' | sort | tail -n 1)
+    nohup >/dev/null 2>&1 java -jar $jarPath com.johannesqvarford.server.App &
+fi
+
+response=$(curl 2>/dev/null localhost:$port/$name?workingDirectory="$PWD" -X POST -H "Content-Type: application/json" -d "$json")
+stdout=$(echo $response | jq .stdout)
+stderr=$(echo $response | jq .stderr)
+exitStatus=$(echo $response | jq .exitStatus)
+
+if [[ $stdout != '""' && $stdout != "" ]]; then
+    stdout=${stdout:1:$((${#stdout} - 2))}
+    echo "$stdout" >&1
+fi
+if [[ $stderr != '""' && $stderr != "" ]]; then
+    stderr=${stderr:1:$((${#stderr} - 2))}
+    echo "$stderr" >&2
+fi
+if [[ $exitStatus == '""' ]]; then
+    exitStatus=1
+fi
+
+exit $exitStatus

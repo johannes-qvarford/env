@@ -1,0 +1,4 @@
+#!/bin/bash
+
+pid=$(ps | grep 'com/johannesqvarford/server' | grep --invert-match 'grep' | cut -d ' ' -f 1)
+kill -9 $pid
