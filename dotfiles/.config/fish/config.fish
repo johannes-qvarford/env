@@ -5,6 +5,7 @@ set color_repo_dirty yellow
 
 set -x PYTHONIOENCODING utf-8
 set -x FZF_DEFAULT_COMMAND 'fish -c "fzf_default_command"'
+set -U FZF_LEGACY_KEYBINDINGS 0
 set -x fzf_prune_dirs \
 	Appdata \
 	.hg \
