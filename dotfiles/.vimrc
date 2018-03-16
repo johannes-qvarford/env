@@ -19,11 +19,12 @@ call dein#add('vim-scripts/ScrollColors')
 call dein#add('vim-scripts/Syntastic',
     \{'on_ft': ['c', 'python', 'c++']})
 call dein#add('christoomey/vim-tmux-navigator')
-call dein#add('SirVer/ultisnips')
 call dein#add('honza/vim-snippets')
+call dein#add('SirVer/ultisnips')
 call dein#add('tpope/vim-fugitive')
 call dein#add('bling/vim-airline')
-call dein#add('lervag/vimtex')
+call dein#add('lervag/vimtex',
+    \{'on_ft': ['tex']})
 call dein#add('JalaiAmitahl/maven-compiler.vim',
     \{'on_ft': ['java']})
 call dein#end()
@@ -36,7 +37,7 @@ function! AirlineInit()
     let g:airline#extensions#tabline#left_sep = '>'
     set laststatus=2
 endfunction
-"autocmd VimEnter * call AirlineInit()
+autocmd VimEnter * call AirlineInit()
 
 let g:syntastic_quiet_messages = { "type": "style" }
 let g:ycm_global_ycm_extra_conf = $HOME . ".vim/you_complete_me.py"
