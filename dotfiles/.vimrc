@@ -1,21 +1,33 @@
-filetype plugin indent on
+set nocompatible
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim " path to dein.vim
+set runtimepath+=/usr/local/opt/fzf
 
-set rtp+=$HOME/.vim/bundle/Vundle.vim
-set rtp+=/usr/local/opt/fzf
+call dein#begin(expand('~/.vim/dein'))
+call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/vimproc.vim', {
+    \ 'build': {
+    \     'windows': 'tools\\update-dll-mingw',
+    \     'cygwin': 'make -f make_cygwin.mak',
+    \     'mac': 'make -f make_mac.mak',
+    \     'linux': 'make',
+    \     'unix': 'gmake',
+    \    },
+    \ })
+call dein#add('Shougo/denite.nvim')
+call dein#add('flazz/vim-colorschemes')
+call dein#add('vim-scripts/ScrollColors')
+call dein#add('vim-scripts/Syntastic',
+    \{'on_ft': ['c', 'python', 'c++']})
+call dein#add('christoomey/vim-tmux-navigator')
+call dein#add('SirVer/ultisnips')
+call dein#add('honza/vim-snippets')
+call dein#add('tpope/vim-fugitive')
+call dein#add('bling/vim-airline')
+call dein#add('lervag/vimtex')
+call dein#add('JalaiAmitahl/maven-compiler.vim',
+    \{'on_ft': ['java']})
+call dein#end()
 
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'     
-Plugin 'flazz/vim-colorschemes'
-Plugin 'ScrollColors'
-Plugin 'Syntastic'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'tpope/vim-fugitive'
-"Plugin 'bling/vim-airline'
-Plugin 'lervag/vimtex'
-Plugin 'JalaiAmitahl/maven-compiler.vim'
-call vundle#end()
 source ~/.basicvimrc
 
 function! AirlineInit()
@@ -29,7 +41,10 @@ endfunction
 let g:syntastic_quiet_messages = { "type": "style" }
 let g:ycm_global_ycm_extra_conf = $HOME . ".vim/you_complete_me.py"
 let g:ycm_confirm_extra_conf = 0
-let g:UltiSnipsExpandTrigger = "<nop>"
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-k>"
+let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+
 let g:ulti_expand_or_jump_res = 0
 
 noremap <leader>ff :FZF<cr>

@@ -4,6 +4,8 @@ import static com.johannesqvarford.setup.os.FileUtils.homeDirectory;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import com.johannesqvarford.setup.os.Shells;
 
 import org.eclipse.jgit.api.Git;
@@ -12,16 +14,15 @@ public class ApplicationTasks
 {
     public static void installVim() throws IOException, InterruptedException
     {
-        Path vimDirectory = homeDirectory().resolve(".vim");
+        Path vimDirectory = Paths.get(homeDirectory().toString(), ".vim", "dein", "repos", "github.com", "Shougo", "dein.vim");
         vimDirectory.toFile().mkdir();
         
-        Path vundleDirectory = vimDirectory.resolve("bundle").resolve("Vundle.vim");
         Git.cloneRepository()
-            .setURI("https://github.com/VundleVim/Vundle.vim.git")
-            .setDirectory(vundleDirectory.toFile());
+            .setURI("https://github.com/Shougo/dein.vim.git")
+            .setDirectory(vimDirectory.toFile());
 
-        Shells.call("vim +PluginInstall +qall");
-        Shells.call("vim +PluginInstall +qall");
+        Shells.call("vim +'call dein#install()' +qall");
+        Shells.call("vim +'call dein#install()' +qall");
     }
 
     public static void convertVimFilesToUnix() throws IOException, InterruptedException
