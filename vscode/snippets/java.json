@@ -12,8 +12,19 @@
 		],
 		"description": "Log output to console"
 	},
-	"Generate getter": {
-		"prefix": "gget",
+	"Public getter": {
+		"prefix": "get",
+		"body": [
+			"public $1 get$2()",
+			"{",
+			"\treturn ${3};",
+			"}",
+			"$0"
+		],
+		"description": "Public getter"
+	},
+	"Package getter": {
+		"prefix": "paget",
 		"body": [
 			"$1 get$2()",
 			"{",
@@ -21,6 +32,142 @@
 			"}",
 			"$0"
 		],
-		"description": "Generate getter"
+		"description": "Package-local getter"
+	},
+	"Optional int getter": {
+		"prefix": "oiget",
+		"body": [
+			"OptionalInt get$1()",
+			"{",
+			"\treturn $2 != null ? OptionalInt.of($2) : OptionalInt.empty();",
+			"}",
+			"$0"
+		],
+		"description": "Package-local getter"
+	},
+	"Optional getter": {
+		"prefix": "oget",
+		"body": [
+			"Optional<$1> get$2()",
+			"{",
+			"\treturn Optional.of($3);",
+			"}",
+			"$0"
+		],
+		"description": "Package-local getter"
+	},
+	"Builder setter": {
+		"prefix": "bsetter",
+		"body": [
+			"${TM_FILENAME_BASE}Builder set$2($3 $4)",
+			"{",
+			"\tthis.$4 = $4;",
+			"\treturn this;",
+			"}",
+			"$0"
+		],
+		"description": "Package-local getter"
+	},
+	"Final field": {
+		"prefix": "ffield",
+		"body": [
+			"private final ${1:String} ${2:name};"
+		],
+		"description": "Final field"
+	},
+	"field": {
+		"prefix": "field",
+		"body": [
+			"private ${1:String} ${2:name};"
+		],
+		"description": "Final field"
+	},
+	"Public class": {
+		"prefix": "cls",
+		"body": [
+			"public class ${TM_FILENAME_BASE}",
+			"{",
+			"\t$0",
+			"}"
+		]
+	},
+	"Package-local class": {
+		"prefix": "pacls",
+		"body": [
+			"class ${TM_FILENAME_BASE}",
+			"{",
+			"\t$0",
+			"}"
+		]
+	},
+	"Builder": {
+		"prefix": "builder",
+		"body": [
+			"class ${TM_FILENAME_BASE}Builder",
+			"{",
+			"\t$0",
+			"\t${TM_FILENAME_BASE} build()",
+			"\t{",
+			"\t\t// formatter:off",
+			"\t\treturn new ${TM_FILENAME_BASE}(",
+			"\t\t);",
+			"\t\t// formatter:on",
+			"\t}",
+			"}"
+		]
+	},
+	"Package-local builder method": {
+		"prefix": "pambuilder",
+		"body": [
+			"${TM_FILENAME_BASE}Builder builder()",
+			"{",
+			"\treturn new ${TM_FILENAME_BASE}Builder();",
+			"}"
+		]
+	},
+	"Public builder method": {
+		"prefix": "mbuilder",
+		"body": [
+			"public ${TM_FILENAME_BASE}Builder builder()",
+			"{",
+			"\treturn new ${TM_FILENAME_BASE}Builder();",
+			"}"
+		]
+	},
+	"Assign field": {
+		"prefix": "afield",
+		"body": [
+			"this.$1 = Objects.requireNonNull($1, \"$1\");"
+		]
+	},
+	"Constructor": {
+		"prefix": "constructor",
+		"body": [
+			"// formatter:off",
+			"public ${TM_FILENAME_BASE}(",
+			"\t$1)",
+			"// formatter:on",
+			"{",
+			"\t$0",
+			"}"
+		]
+	},
+	"Package-local Constructor": {
+		"prefix": "paconstructor",
+		"body": [
+			"// formatter:off",
+			"${TM_FILENAME_BASE}(",
+			"\t$1)",
+			"// formatter:on",
+			"{",
+			"\t$0",
+			"}"
+		]
+	},
+	"Not null annotation": {
+		"prefix": "nn",
+		"body": [
+			"@NotNull"
+		]
 	}
 }
