@@ -27,6 +27,10 @@
        {
            "before": ["j", "k"],
            "after": ["<Esc>"]
+       },
+       {
+           "before": ["€"],
+           "after": ["$"]
        }
     ],
     "vim.otherModesKeyBindingsNonRecursive": [
@@ -59,7 +63,7 @@
                      "command": "workbench.action.openNextRecentlyUsedEditorInGroup",
                      "args": []
                  }
-             ]
+            ]
          },
          {
             "before": ["<leader>", "h"],
@@ -88,6 +92,78 @@
                  }
              ]
          },
+         {
+            "before": ["<leader>", "d", "s", "p"],
+            "commands": [
+                {
+                    "command": "workbench.action.debug.pause",
+                    "args": []
+                },
+             ]
+         },
+         {
+            "before": ["<leader>", "d", "s", "d"],
+            "commands": [
+                {
+                    "command": "workbench.action.debug.start",
+                    "args": []
+                },
+             ]
+         },
+         {
+            "before": ["<leader>", "d", "s", "f"],
+            "commands": [
+                {
+                    "command": "workbench.action.debug.run",
+                    "args": []
+                },
+             ]
+         },
+         {
+            "before": ["<leader>", "d", "s", "r"],
+            "commands": [
+                {
+                    "command": "workbench.action.debug.restart",
+                    "args": []
+                },
+             ]
+         },
+         {
+            "before": ["<leader>", "d", "i"],
+            "commands": [
+                {
+                    "command": "workbench.action.debug.stepInto",
+                    "args": []
+                },
+             ]
+         },
+         {
+            "before": ["<leader>", "d", "u"],
+            "commands": [
+                {
+                    "command": "workbench.action.debug.stepOut",
+                    "args": []
+                },
+             ]
+         },
+         {
+            "before": ["<leader>", "d", "v"],
+            "commands": [
+                {
+                    "command": "workbench.action.debug.stepOver",
+                    "args": []
+                },
+             ]
+         },
+         {
+            "before": ["<leader>", "d", "s", "s"],
+            "commands": [
+                {
+                    "command": "workbench.action.debug.stop",
+                    "args": []
+                },
+             ]
+         },
     ],
     "vim.leader": "s",
     "vim.easymotion": true,
@@ -105,5 +181,7 @@
         "limits",
         "settings"
     ],
-    "java.errors.incompleteClasspath.severity": "ignore"
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "editor.snippetSuggestions": "top",
+    "workbench.colorTheme": "Jellybeans"
 }

@@ -6,7 +6,10 @@ let g:is_windows = has("win32")
 let g:is_cygwin = has("win32unix")
 let g:is_windows_like = g:is_windows || g:is_cygwin
 let g:is_unix = has("unix")
-let g:is_mac = has("mac")
+let g:is_mac = 0
+if has("unix") && system('uname') =~ "Darwin"
+    let g:is_mac = 1
+endif
 let g:is_unix_like = g:is_unix || g:is_cygwin
 
 if g:is_windows
@@ -19,7 +22,6 @@ if g:is_mac
     "easier to reach $
     inoremap € $
     noremap € $
-
     "swap because windows scancode for < is § on mac
     inoremap § <
     inoremap ° >
@@ -40,6 +42,8 @@ else
     inoremap ½((( [
     inoremap ½))) ]
 endif
+
+
 
 "basic preferences
 filetype plugin on

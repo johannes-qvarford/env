@@ -83,7 +83,7 @@
 		"description": "Final field"
 	},
 	"Public class": {
-		"prefix": "cls",
+		"prefix": "class",
 		"body": [
 			"public class ${TM_FILENAME_BASE}",
 			"{",
@@ -92,7 +92,7 @@
 		]
 	},
 	"Package-local class": {
-		"prefix": "pacls",
+		"prefix": "paclass",
 		"body": [
 			"class ${TM_FILENAME_BASE}",
 			"{",
