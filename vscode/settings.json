@@ -20,7 +20,7 @@
     "vim.overrideCopy": false,
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": false,
-    "java.jdt.ls.vmargs": "-Dmaven.wagon.http.ssl.insecure=true",
+    "java.jdt.ls.vmargs": "-Dmaven.wagon.http.ssl.insecure=true -javaagent:\"/Users/johqva/.vscode/extensions/GabrielBB.vscode-lombok-0.9.2/server/lombok.jar\" -Xbootclasspath/a:\"/Users/johqva/.vscode/extensions/GabrielBB.vscode-lombok-0.9.2/server/lombok.jar\"",
     // Enable once we have setup path for neoVim.
     //"vim.enableNeovim": true,
     "vim.insertModeKeyBindingsNonRecursive": [
@@ -172,6 +172,7 @@
     "explorer.confirmDelete": false,
     "window.zoomLevel": 0,
     "cSpell.userWords": [
+        "GDPR",
         "Settingssida",
         "cashier",
         "freespinbo",
@@ -183,5 +184,7 @@
     ],
     "java.errors.incompleteClasspath.severity": "ignore",
     "editor.snippetSuggestions": "top",
-    "workbench.colorTheme": "Jellybeans"
+    "workbench.colorTheme": "Jellybeans",
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false
 }

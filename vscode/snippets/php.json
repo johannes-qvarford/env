@@ -17,7 +17,7 @@
 	"error print variable": {
 		"prefix": "evar",
 		"body": [
-			"error_log('--- $1 --- ' . var_export($$2, true));",
+			"error_log('--- location: $1 --- var: $$2 --- ' . var_export($$2, true));",
 			"$0"
 		],
 		"description": "Log a variable to the error_log"
@@ -25,7 +25,7 @@
 	"error print callstack": {
 		"prefix": "estack",
 		"body": [
-			"error_log('--- $1 ---\n' . json_encode(debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, 2), 128));",
+			"error_log('--- location: $1 ---\n' . json_encode(debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, 2), 128));",
 			"$0"
 		],
 		"description": "Log the callstack to the error_log"

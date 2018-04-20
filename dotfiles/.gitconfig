@@ -10,7 +10,7 @@
 	destroy = !git clean -d -f && git undo
 	idiff = diff --cached --color
 	id = diff --cached --color
-	lg = log --graph --pretty=format:'%Cblue%d %Cgreen%h %Cred%an %Cgreen%s' 
+	lg = log --graph --pretty=format:'%Cgreen%d %Creset%ai %Cgreen%h %Cred%an %Cgreen%s'
 	me = merge
 	mt = mergetool
 	nb = checkout -b
