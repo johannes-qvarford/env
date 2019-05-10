@@ -7,3 +7,6 @@ fishd.*
 *.swp
 *.orig
 .vscode
+
+vscodefiles/User/workspaceStorage/**/*
+vscodefiles/User/globalStorage

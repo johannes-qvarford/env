@@ -186,5 +186,6 @@
     "editor.snippetSuggestions": "top",
     "workbench.colorTheme": "Jellybeans",
     "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false
+    "telemetry.enableCrashReporter": false,
+    "go.useLanguageServer": true
 }

@@ -23,6 +23,15 @@ func LinkFiles(repoDir string) error {
 		fmt.Sprintf("%s/%s", repoDir, "configfiles"),
 		fmt.Sprintf("%s/.config", os.Getenv("HOME")))
 
+	if err != nil {
+		return err
+	}
+
+	fmt.Println("Linking vscodefiles.")
+	err = linkFilesInDir(
+		fmt.Sprintf("%s/%s", repoDir, "vscodefiles"),
+		fmt.Sprintf("%s/.config/Code", os.Getenv("HOME")))
+
 	return err
 }
 
@@ -62,7 +71,7 @@ func linkSwitchero(dotFilePath, homeFilePath string) error {
 	// Delete existing non-link.
 	if fileExists && !homeIsLink {
 		fmt.Printf("Removing %s.\n", homeFilePath)
-		err = os.Remove(homeFilePath)
+		err = os.RemoveAll(homeFilePath)
 		if err != nil {
 			return err
 		}

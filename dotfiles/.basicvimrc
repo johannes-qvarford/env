@@ -2,21 +2,12 @@ set nocompatible
 filetype off
 filetype plugin indent on
 
-let g:is_windows = has("win32")
-let g:is_cygwin = has("win32unix")
-let g:is_windows_like = g:is_windows || g:is_cygwin
 let g:is_unix = has("unix")
 let g:is_mac = 0
 if has("unix") && system('uname') =~ "Darwin"
     let g:is_mac = 1
 endif
 let g:is_unix_like = g:is_unix || g:is_cygwin
-
-if g:is_windows
-    set shell=C:/cygwin64/bin/mintty
-else
-    set shell=/bin/bash
-end
 
 if g:is_mac
     "easier to reach $
@@ -42,7 +33,6 @@ else
     inoremap ½((( [
     inoremap ½))) ]
 endif
-
 
 
 "basic preferences
@@ -100,11 +90,6 @@ noremap <leader>L :tabn<cr>
 noremap <leader>H :tabp<cr>
 noremap <leader>D :tabclose<cr>
 
-"plugin commands
-noremap <leader>ff :FZF<cr>
-noremap <leader>fh :FZF ~<cr>
-"common but more obscure commands
-
 "source current file
 noremap <leader><leader>rc :w <bar>source %<cr>
 "remove copy pasted line numbers
@@ -112,17 +97,15 @@ noremap <leader><leader>ln eval ":normal! :%s/\v^[[:space:]]*[[:digit:]]+ //\<cr
 "edit a file relative to home
 noremap <leader><leader>eh :edit ~/
 
-" This causes more harm than good, particularly in visual studio when
-" selecting auto completions.
-"noremap <up> <nop>
-"noremap <left> <nop>
-"noremap <right> <nop>
-"noremap <down> <nop>
-"inoremap <up> <nop>
-"inoremap <left> <nop>
-"inoremap <right> <nop>
-"inoremap <down> <nop>
-inoremap <esc> <nop>
+noremap <up> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+noremap <down> <nop>
+inoremap <up> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+inoremap <down> <nop>
+noremap <esc> <nop>
 inoremap h <nop>
 inoremap j <nop>
 inoremap k <nop>
