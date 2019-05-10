@@ -105,7 +105,6 @@ inoremap <up> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 inoremap <down> <nop>
-noremap <esc> <nop>
 inoremap h <nop>
 inoremap j <nop>
 inoremap k <nop>
