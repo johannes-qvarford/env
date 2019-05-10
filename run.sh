@@ -1,9 +1,9 @@
 #!/bin/bash
 
-if [[ "$(uname)" == "Darwin" ]]; then
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew install maven
-    #brew cask install java
+OS=$(cat /etc/os-release | grep '^NAME' | sed -E 's/(.*)=(.*)/\2/')
+
+if [[ "$OS" == "Fedora" ]]; then
+    sudo dnf install golang
 fi
 
-mvn exec:java -f personal -pl setup -am -Dexec.mainClass=com.johannesqvarford.setup.App -Dexec.args="-r $PWD $*"
+go run ./setup -install-dependencies -initialize-vim -link-files -change-shell

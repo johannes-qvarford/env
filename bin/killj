@@ -1,6 +1,0 @@
-#!/bin/bash
-
-pid=$(ps -A | grep 'com/johannesqvarford/server' | grep --invert-match 'grep' | cut -d ' ' -f 1)
-if test "X$pid" != "X"; then
-    kill -9 $pid
-fi
