@@ -6,9 +6,6 @@ function fish_prompt -d "Write out the prompt"
 end
 
 function branch
-	#if hg_in_repo
-	#	print_branch hg
-	#end
 	if git_in_repo
 		print_branch git
 	end
