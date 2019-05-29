@@ -8,7 +8,7 @@ import (
 
 // InstallDeps Install dependencies for ubuntu.
 func InstallDeps() error {
-	return core.InstallPackages(installUbuntuPackage, "fish", "tmux", "vim")
+	return core.InstallPackages(installUbuntuPackage, "fish", "tmux", "vim", "maven")
 }
 
 func installUbuntuPackage(pkg string) error {

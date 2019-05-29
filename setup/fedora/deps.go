@@ -11,7 +11,7 @@ import (
 // InstallDeps Install dependencies for fedora.
 func InstallDeps() error {
 	overwriteFileAsAdministrator("/etc/yum.repos.d/vscode.repo", vscodeRepo)
-	return core.InstallPackages(installFedoraPackage, "code", "fish", "tmux", "vim-enhanced", "util-linux-user")
+	return core.InstallPackages(installFedoraPackage, "code", "fish", "tmux", "vim-enhanced", "util-linux-user", "maven")
 }
 
 func overwriteFileAsAdministrator(path string, content string) error {
