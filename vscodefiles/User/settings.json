@@ -14,7 +14,6 @@
         "**/.sass_cache": true
     },
     "files.autoSave": "off",
-    "editor.fontSize": 13,
     "vim.enableNeovim": true,
     "vim.neovimPath": "/usr/local/bin/nvim",
     "vim.overrideCopy": false,
@@ -170,7 +169,6 @@
     "extensions.ignoreRecommendations": true,
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
-    "window.zoomLevel": 0,
     "cSpell.userWords": [
         "GDPR",
         "Settingssida",
@@ -187,5 +185,8 @@
     "workbench.colorTheme": "Jellybeans",
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
-    "go.useLanguageServer": true
+    "go.useLanguageServer": true,
+    "terminal.integrated.lineHeight": 0,
+    "editor.fontFamily": "'Droid Sans Mono', monospace, 'Droid Sans Fallback'",
+    "lldb.adapterType": "bundled"
 }

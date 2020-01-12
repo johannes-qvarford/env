@@ -1,4 +1,4 @@
-function remove_duplicates_in_array --description 'Remove duplicates from environment variable'
+function remove_duplicates_in_array
     if test (count $argv) = 1
         set -l newvar
         set -l count 0
