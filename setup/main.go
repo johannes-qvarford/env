@@ -4,7 +4,9 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"setup/core"
 	"setup/fedora"
+	"setup/ubuntu"
 )
 
 type flags struct {
@@ -13,6 +15,7 @@ type flags struct {
 	initVim     *bool
 	linkFiles   *bool
 	changeShell *bool
+	os          *string
 }
 
 func main() {
@@ -22,13 +25,20 @@ func main() {
 		initVim:     flag.Bool("initialize-vim", false, "whether or not vim should be setup or not."),
 		linkFiles:   flag.Bool("link-files", false, "whether or not to link home and repository files."),
 		changeShell: flag.Bool("change-shell", false, "whether or not to change the shell."),
+		os:          flag.String("os", "Fedora", "Operating system to install on."),
 	}
 
 	flag.Parse()
 
+	var activeOS core.OS
+	activeOS = fedora.Fedora{}
+	if *flags.os == "Ubuntu" {
+		activeOS = ubuntu.Ubuntu{}
+	}
+
 	if *flags.installDeps {
 		fmt.Printf("Installing dependencies...\n")
-		err := fedora.InstallDeps()
+		err := activeOS.InstallDeps()
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err)
 			os.Exit(1)
@@ -37,7 +47,7 @@ func main() {
 
 	if *flags.initVim {
 		fmt.Printf("Initializing Vim...\n")
-		err := fedora.InitVim()
+		err := activeOS.InitVim()
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err)
 			os.Exit(1)
@@ -46,7 +56,7 @@ func main() {
 
 	if *flags.linkFiles {
 		fmt.Printf("Linking dotfiles...\n")
-		err := fedora.LinkFiles(*flags.repoDir)
+		err := activeOS.LinkFiles(*flags.repoDir)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err)
 			os.Exit(1)
@@ -55,7 +65,7 @@ func main() {
 
 	if *flags.changeShell {
 		fmt.Printf("Changing shell...\n")
-		err := fedora.ChangeShell()
+		err := activeOS.ChangeShell()
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err)
 		}
