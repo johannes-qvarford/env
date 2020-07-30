@@ -1,0 +1,7 @@
+fedora install yarn
+sudo dnf install yarn
+sudo dnf install npm
+sudo npm install -g yarn
+sudo yarn global add gatsby-cli
+cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+sudo dnf install keepass
